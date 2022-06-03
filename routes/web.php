@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\backoffice\AuthController;
 use App\Http\Controllers\backoffice\DashboardController;
+use App\Http\Controllers\backoffice\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,17 @@ Route::prefix('/bo')->group(function () {
     Route::post('/login', [AuthController::class, 'authenticate'])->name('login')->middleware('guest');
 
     Route::middleware('auth')->group(function () {
-        Route::get('/', [DashboardController::class, 'index']);
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::resource('users', UserController::class, [
+            'names' => [
+                'index' => 'users',
+                'store' => 'users.store',
+                'create' => 'users.create',
+                'edit' => 'users.edit',
+                'update' => 'users.update',
+                'destroy' => 'users.destroy',
+            ],
+            'except' => [ 'show' ]
+        ]);
     });
 });
