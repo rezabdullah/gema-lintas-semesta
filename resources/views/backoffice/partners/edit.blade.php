@@ -1,6 +1,6 @@
 @extends('backoffice.layouts.main', [
     'title' => 'Update partner',
-    'contentTitle' => 'Warehouses'
+    'contentTitle' => 'Partners'
 ])
 
 @section('content-page')

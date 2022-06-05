@@ -101,9 +101,9 @@ class WarehouseController extends Controller
             'status' => 'required',
         ]);
 
-        $sub_district = strpos('#', $request->sub_district) > 0 ? explode('#', $request->sub_district)[1] : $request->sub_district;
-        $city = strpos('#', $request->city) > 0 ? explode('#', $request->city)[1] : $request->city;
-        $province = strpos('#', $request->province) > 0 ? explode('#', $request->province)[1] : $request->province;
+        $sub_district = strpos($request->sub_district, '#') > 0 ? explode('#', $request->sub_district)[1] : $request->sub_district;
+        $city = strpos($request->city, '#') > 0 ? explode('#', $request->city)[1] : $request->city;
+        $province = strpos($request->province, '#') > 0 ? explode('#', $request->province)[1] : $request->province;
 
         $request->merge([
             'sub_district' => $sub_district,
