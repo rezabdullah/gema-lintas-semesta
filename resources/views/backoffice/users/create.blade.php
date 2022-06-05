@@ -5,7 +5,7 @@
 
 @section('content-page')
     <div class="row">
-        <div class="col-12 col-md-7">
+        <div class="col-12 col-lg-7">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Add new</h6>
@@ -26,7 +26,7 @@
                         <hr>
                         <p style="font-size: 0.9rem;" class="mb-0">Password default untuk user baru berupa alamat email yang diinput pada form di bawah.</p>
                     </div>
-                    <form action="/bo/users" method="POST">
+                    <form action="{{ route('users.store') }}" method="POST">
                         @csrf
 
                         <div class="form-group">

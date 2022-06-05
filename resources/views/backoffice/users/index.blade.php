@@ -21,43 +21,45 @@
                     </div>
                     @endif
 
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Role</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($users as $index => $user)
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
                                 <tr>
-                                    <th scope="row">{{ ($index+1) }}</th>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>
-                                        @foreach ($user->roles as $role)
-                                            {{ $role->name }}
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary btn-sm">Edit</a>
-
-                                        @if ($user->id != Auth::user()->id)
-                                            <form method="POST" action="{{ route('users.destroy', $user->id) }}" class="d-inline">
-                                                @csrf
-                                                @method('DELETE')
-    
-                                                <button onclick="return confirm('Are you sure want delete this user ?')" type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                            </form>
-                                        @endif
-                                    </td>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Role</th>
+                                    <th scope="col">Action</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach($users as $index => $user)
+                                    <tr>
+                                        <th scope="row">{{ ($index+1) }}</th>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>
+                                            @foreach ($user->roles as $role)
+                                                {{ $role->name }}
+                                            @endforeach
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary btn-sm my-1">Edit</a>
+
+                                            @if ($user->id != Auth::user()->id)
+                                                <form method="POST" action="{{ route('users.destroy', $user->id) }}" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+        
+                                                    <button onclick="return confirm('Are you sure want delete this user ?')" type="submit" class="btn btn-danger btn-sm my-1">Delete</button>
+                                                </form>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
 
                     <div class="pagination justify-content-center">
                         {{ $users->links('pagination::bootstrap-4') }}

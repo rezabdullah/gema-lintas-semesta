@@ -1,14 +1,14 @@
 @extends('backoffice.layouts.main', [
-    'title' => 'Update user',
-    'contentTitle' => 'Users'
+    'title' => 'Update role permission',
+    'contentTitle' => 'Roles'
 ])
 
 @section('content-page')
     <div class="row">
-        <div class="col-12 col-lg-7">
+        <div class="col-12 col-md-7">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Edit</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Manage Permissions</h6>
                 </div>
                 <div class="card-body">
                     @if(Session::has('success'))
@@ -21,13 +21,18 @@
                     </div>
                     @endif
 
-                    <form action="{{ route('users.update', $user->id) }}" method="POST">
+                    <form action="{{ route('users.update', $role->id) }}" method="POST">
                         @csrf
                         @method('PATCH')
 
                         <div class="form-group">
-                            <label for="name">Fullname</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="John Doe" value="{{ $user->name }}">
+                            <label for="name">Permissions</label>
+                            {{-- <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="John Doe" value="{{ $user->name }}"> --}}
+                            @foreach ($permissions as $permissionAvailable)
+                                @foreach ($role->permissions as $permissionChoosed)
+                                <input type="checkbox" name="permissions[]" value="{{ $permissionAvailable->id }}"> {{ $permissionAvailable->name }} <br>
+                                @endforeach
+                            @endforeach
 
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -35,7 +40,7 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="name@example.com" value="{{ $user->email }}">
 
@@ -54,11 +59,11 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <button class="btn btn-primary">Save</button>
 
-                            <a href="{{ route('users') }}" class="btn btn-default">Back</a>
+                            <a href="{{ route('roles') }}" class="btn btn-default">Back</a>
                         </div>
                     </form>
                 </div>

@@ -3,82 +3,122 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Backoffice {{ Request::path() }}</div>
+        <div class="sidebar-brand-text mx-3">Backoffice</div>
     </a>
 
     <hr class="sidebar-divider my-0">
 
     <li class="nav-item active">
-        <a class="nav-link" href="/bo">
+        <a class="nav-link" href="{{ route('dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
         </a>
     </li>
 
+    @canany(['view admin', 'add admin', 'edit admin', 'delete admin', 'view admin role', 'manage admin role'])
+        <hr class="sidebar-divider">
+
+        <div class="sidebar-heading">
+            Account Management
+        </div>
+
+        @canany(['view admin', 'add admin', 'edit admin', 'delete admin'])
+            <li class="nav-item">
+                <a class="nav-link {{ request()->is('bo/users*') ? '' : 'collapsed' }}" href="#" data-toggle="collapse" data-target="#collapseUser"
+                    aria-expanded="{{ request()->is('bo/users*') ? 'true' : 'false' }}" aria-controls="collapseUser">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Users</span>
+                </a>
+                <div id="collapseUser" class="collapse {{ request()->is('bo/users*') ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        @can('add admin')
+                            <a class="collapse-item {{ request()->is('bo/users/create') ? 'active' : '' }}" href="{{ route('users.create') }}">New</a>
+                        @endcan
+
+                        @canany(['view admin', 'edit admin', 'delete admin'])
+                            <a class="collapse-item {{ request()->is('bo/users') ? 'active' : '' }}" href="{{ route('users') }}">Manage</a>
+                        @endcan
+                    </div>
+                </div>
+            </li>
+        @endcan
+        
+        @canany(['view admin role', 'manage admin role'])
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('roles') }}">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Roles</span>
+                </a>
+            </li>
+        @endcan
+    @endcan
+
     <hr class="sidebar-divider">
 
     <div class="sidebar-heading">
-        Account Management
+        Master Data
     </div>
 
     <li class="nav-item">
-        <a class="nav-link {{ request()->is('bo/users*') ? '' : 'collapsed' }}" href="#" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="{{ request()->is('bo/users*') ? 'true' : 'false' }}" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-users"></i>
-            <span>Users</span>
+        <a class="nav-link" href="">
+            <i class="fas fa-fw fa-file-invoice-dollar"></i>
+            <span>Cost Rate</span>
         </a>
-        <div id="collapseTwo" class="collapse {{ request()->is('bo/users*') ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item {{ request()->is('bo/users/create') ? 'active' : '' }}" href="/bo/users/create">New</a>
-                <a class="collapse-item {{ request()->is('bo/users') ? 'active' : '' }}" href="/bo/users">Manage</a>
-            </div>
-        </div>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Roles</span>
-        </a>
-    </li>
+    @canany(['view partner', 'add partner', 'edit partner', 'delete partner'])
+        <li class="nav-item">
+            <a class="nav-link {{ request()->is('bo/partners*') ? '' : 'collapsed' }}" href="#" data-toggle="collapse" data-target="#collapsePartner"
+                aria-expanded="{{ request()->is('bo/partners*') ? 'true' : 'false' }}" aria-controls="collapsePartner">
+                <i class="fas fa-fw fa-book"></i>
+                <span>Partners</span>
+            </a>
+            <div id="collapsePartner" class="collapse {{ request()->is('bo/partners*') ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    @can('add admin')
+                        <a class="collapse-item {{ request()->is('bo/partners/create') ? 'active' : '' }}" href="{{ route('partners.create') }}">New</a>
+                    @endcan
+
+                    @canany(['view admin', 'edit admin', 'delete admin'])
+                        <a class="collapse-item {{ request()->is('bo/partners') ? 'active' : '' }}" href="{{ route('partners') }}">Manage</a>
+                    @endcan
+                </div>
+            </div>
+        </li>
+    @endcan
+
+    @canany(['view warehouse', 'add warehouse', 'edit warehouse', 'delete warehouse'])
+        <li class="nav-item">
+            <a class="nav-link {{ request()->is('bo/warehouses*') ? '' : 'collapsed' }}" href="#" data-toggle="collapse" data-target="#collapseWarehouse"
+                aria-expanded="{{ request()->is('bo/warehouses*') ? 'true' : 'false' }}" aria-controls="collapseWarehouse">
+                <i class="fas fa-fw fa-warehouse"></i>
+                <span>Warehouse</span>
+            </a>
+            <div id="collapseWarehouse" class="collapse {{ request()->is('bo/warehouses*') ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    @can('add admin')
+                        <a class="collapse-item {{ request()->is('bo/warehouses/create') ? 'active' : '' }}" href="{{ route('warehouses.create') }}">New</a>
+                    @endcan
+
+                    @canany(['view admin', 'edit admin', 'delete admin'])
+                        <a class="collapse-item {{ request()->is('bo/warehouses') ? 'active' : '' }}" href="{{ route('warehouses') }}">Manage</a>
+                    @endcan
+                </div>
+            </div>
+        </li>
+    @endcan
 
     <hr class="sidebar-divider">
 
     <div class="sidebar-heading">
-        Addons
+        Orders
     </div>
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-            aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Pages</span>
+        <a class="nav-link" href="">
+            <i class="fas fa-fw fa-book"></i>
+            <span>Partner</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Login Screens:</h6>
-                <a class="collapse-item" href="login.html">Login</a>
-                <a class="collapse-item" href="register.html">Register</a>
-                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                <div class="collapse-divider"></div>
-                <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="404.html">404 Page</a>
-                <a class="collapse-item" href="blank.html">Blank Page</a>
-            </div>
-        </div>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span>
-        </a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
     </li>
 
     <hr class="sidebar-divider d-none d-md-block">
