@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\backoffice\AuthController;
+use App\Http\Controllers\backoffice\CostRateController;
 use App\Http\Controllers\backoffice\DashboardController;
 use App\Http\Controllers\backoffice\PartnerController;
 use App\Http\Controllers\backoffice\RoleController;
@@ -37,12 +38,12 @@ Route::prefix('/bo')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-        Route::get('/users', [UserController::class, 'index'])->name('users')->middleware('permission:view admin');
-        Route::get('/users/create', [UserController::class, 'create'])->name('users.create')->middleware('permission:add admin');
-        Route::post('/users', [UserController::class, 'store'])->name('users.store')->middleware('permission:add admin');
-        Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit')->middleware('permission:edit admin');
-        Route::patch('/users/{user}', [UserController::class, 'update'])->name('users.update')->middleware('permission:edit admin');
-        Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy')->middleware('permission:delete admin');
+        Route::get('/cost-rates', [CostRateController::class, 'index'])->name('cost-rates')->middleware('permission:view cost rate');
+        Route::get('/cost-rates/create', [CostRateController::class, 'create'])->name('cost-rates.create')->middleware('permission:add cost rate');
+        Route::post('/cost-rates', [CostRateController::class, 'store'])->name('cost-rates.store')->middleware('permission:add cost rate');
+        Route::get('/cost-rates/{costRate}/edit', [CostRateController::class, 'edit'])->name('cost-rates.edit')->middleware('permission:edit cost rate');
+        Route::patch('/cost-rates/{costRate}', [CostRateController::class, 'update'])->name('cost-rates.update')->middleware('permission:edit cost rate');
+        Route::delete('/cost-rates/{costRate}', [CostRateController::class, 'destroy'])->name('cost-rates.destroy')->middleware('permission:delete cost rate');
 
         Route::get('/partners', [PartnerController::class, 'index'])->name('partners')->middleware('permission:view partner');
         Route::get('/partners/create', [PartnerController::class, 'create'])->name('partners.create')->middleware('permission:add partner');
@@ -57,6 +58,13 @@ Route::prefix('/bo')->group(function () {
         Route::get('/warehouses/{warehouse}/edit', [WarehouseController::class, 'edit'])->name('warehouses.edit')->middleware('permission:edit warehouse');
         Route::patch('/warehouses/{warehouse}', [WarehouseController::class, 'update'])->name('warehouses.update')->middleware('permission:edit warehouse');
         Route::delete('/warehouses/{warehouse}', [WarehouseController::class, 'destroy'])->name('warehouses.destroy')->middleware('permission:delete warehouse');
+
+        Route::get('/users', [UserController::class, 'index'])->name('users')->middleware('permission:view admin');
+        Route::get('/users/create', [UserController::class, 'create'])->name('users.create')->middleware('permission:add admin');
+        Route::post('/users', [UserController::class, 'store'])->name('users.store')->middleware('permission:add admin');
+        Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit')->middleware('permission:edit admin');
+        Route::patch('/users/{user}', [UserController::class, 'update'])->name('users.update')->middleware('permission:edit admin');
+        Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy')->middleware('permission:delete admin');
 
         Route::get('/roles', [RoleController::class, 'index'])->name('roles')->middleware('permission:view admin role');
         Route::get('/roles/{role}/edit', [RoleController::class, 'edit'])->name('roles.edit')->middleware('permission:manage admin role');
