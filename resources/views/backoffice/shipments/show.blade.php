@@ -148,12 +148,14 @@
                                             <td>{{ $detail->description }}</td>
                                             <td>{{ $detail->delivery_status }}</td>
                                             <td>
-                                                <form method="POST" action="{{ route('shipments.delivery.destroy', $detail->id) }}" class="d-inline">
-                                                    @csrf
-                                                    @method('DELETE')
-        
-                                                    <button onclick="return confirm('Are you sure want delete this record ?')" type="submit" class="btn btn-danger btn-sm my-1">Delete</button>
-                                                </form>
+                                                @if ($detail->delivery_status != 'REQUEST-PICKUP')
+                                                    <form method="POST" action="{{ route('shipments.delivery.destroy', $detail->id) }}" class="d-inline">
+                                                        @csrf
+                                                        @method('DELETE')
+            
+                                                        <button onclick="return confirm('Are you sure want delete this record ?')" type="submit" class="btn btn-danger btn-sm my-1">Delete</button>
+                                                    </form>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach

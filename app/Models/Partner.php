@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Partner extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'id',
@@ -21,6 +22,6 @@ class Partner extends Model
 
     public function cost_rates()
     {
-        return $this->hasMany(CostRate::class);
+        return $this->hasMany(CostRate::class)->withTrashed();
     }
 }

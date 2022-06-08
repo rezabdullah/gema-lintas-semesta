@@ -28,12 +28,12 @@ class Cargo extends Model
 
     public function partner()
     {
-        return $this->belongsTo(Partner::class);
+        return $this->belongsTo(Partner::class)->withTrashed();
     }
 
     public function costRate()
     {
-        return $this->belongsTo(CostRate::class);
+        return $this->belongsTo(CostRate::class)->withTrashed();
     }
 
     public function cargoDetails()
