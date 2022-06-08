@@ -41,7 +41,7 @@ Route::prefix('/ajax')->group(function () {
 });
 
 Route::prefix('/bo')->group(function () {
-    Route::get('/login', [AuthController::class, 'index'])->middleware('guest');
+    Route::get('/login', [AuthController::class, 'index'])->name('login.index')->middleware('guest');
     Route::post('/login', [AuthController::class, 'authenticate'])->name('login')->middleware('guest');
 
     Route::middleware('auth')->group(function () {
@@ -87,5 +87,9 @@ Route::prefix('/bo')->group(function () {
         Route::get('/roles', [RoleController::class, 'index'])->name('roles')->middleware('permission:view admin role');
         Route::get('/roles/{role}/edit', [RoleController::class, 'edit'])->name('roles.edit')->middleware('permission:manage admin role');
         Route::patch('/roles/{role}', [RoleController::class, 'update'])->name('roles.update')->middleware('permission:manage admin role');
+
+        Route::get('/change-password', [AuthController::class, 'editPassword'])->name('change-password.edit');
+        Route::patch('/change-password', [AuthController::class, 'updatePassword'])->name('change-password.update');
+        Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     });
 });
