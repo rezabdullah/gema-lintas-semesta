@@ -33,9 +33,8 @@ class CargoController extends Controller
     public function createPickup()
     {
         $partners = Partner::all();
-        $costRates = CostRate::all();
         
-        return view('backoffice.shipments.pickup', compact('partners', 'costRates'));
+        return view('backoffice.shipments.pickup', compact('partners'));
     }
 
     public function storePickup(Request $request)
@@ -92,7 +91,7 @@ class CargoController extends Controller
     {
         $request->validate([
             'description' => 'required',
-            'delivery_status' => 'required|in:PICKED-UP,DELIVERING,RECEIVED-AT-WAREHOUSE,DELIVERED',
+            'delivery_status' => 'required|in:PICKED-UP,DELIVERING,RECEIVED-AT-WAREHOUSE,DELIVERED,DELIVERING-BY-COURIER',
         ]);
 
         CargoDetail::create([

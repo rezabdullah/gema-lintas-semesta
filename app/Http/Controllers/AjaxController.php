@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CostRate;
 use App\Models\Partner;
 use Illuminate\Http\Request;
 
@@ -30,8 +31,9 @@ class AjaxController extends Controller
 
     public function partner(Request $request)
     {
-        $partner = Partner::with('cost_rates')->find($request->id);
+        $partner = Partner::find($request->id);
+        $costRates = CostRate::where('partner_id', null)->orWhere('partner_id', $request->id)->get();
 
-        return response()->json($partner);
+        return response()->json(compact('partner', 'costRates'));
     }
 }

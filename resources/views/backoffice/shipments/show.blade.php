@@ -121,7 +121,9 @@
                     <div class="row px-2 mb-4">
                         <h2 class="h5 my-0 mr-3 text-gray-800">Shipment Records</h2>
 
-                        <a href="{{ route('shipments.delivery.create', $cargo->id) }}" class="btn btn-primary btn-sm">Add Shipment Record</a>
+                        @if ($cargo->cargoDetails[0]->delivery_status != 'DELIVERED')
+                            <a href="{{ route('shipments.delivery.create', $cargo->id) }}" class="btn btn-primary btn-sm">Add Shipment Record</a>
+                        @endif
                     </div>
 
                     <div class="table-responsive">
@@ -148,7 +150,7 @@
                                             <td>{{ $detail->description }}</td>
                                             <td>{{ $detail->delivery_status }}</td>
                                             <td>
-                                                @if ($detail->delivery_status != 'REQUEST-PICKUP')
+                                                @if ($detail->delivery_status != 'REQUEST-PICKUP' && $detail->user_id == Auth::user()->id)
                                                     <form method="POST" action="{{ route('shipments.delivery.destroy', $detail->id) }}" class="d-inline">
                                                         @csrf
                                                         @method('DELETE')

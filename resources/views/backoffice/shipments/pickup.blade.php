@@ -253,10 +253,10 @@
                     url: '{{ route("ajax.partner") }}',
                     type: 'GET',
                     data: { id: $(this).val() },
-                    success: function (data) {
+                    success: function (data) {                        
                         $('#cost_rate_id').empty().attr('disabled', false).append('<option value="">Pilih Cost Rate</option>');
 
-                        $.each(data.cost_rates, function (key, value) {
+                        $.each(data.costRates, function (key, value) {
                             $('#cost_rate_id').append('<option value="' + value['id'] + '"'+
                                 'data-sender-province="' + value['sender_province'] + '"' +
                                 'data-sender-city="' + value['sender_city'] + '"' +
