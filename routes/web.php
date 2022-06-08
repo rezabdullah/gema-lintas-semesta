@@ -46,6 +46,7 @@ Route::prefix('/bo')->group(function () {
 
     Route::middleware('auth')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::post('/dashboard-tracking-shipments', [DashboardController::class, 'trackingShipment'])->name('dashboard.tracking.shipments');
 
         Route::get('/shipments', [CargoController::class, 'index'])->name('shipments')->middleware('permission:view shipment');
         Route::get('/shipments/pickup', [CargoController::class, 'createPickup'])->name('shipments.pickup.create')->middleware('permission:create pickup shipment');
