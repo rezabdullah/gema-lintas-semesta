@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Partner;
 use Illuminate\Http\Request;
 
-class DistrictController extends Controller
+class AjaxController extends Controller
 {
-    public function province()
+    public function provinces()
     {
         $provinces = \Indonesia::allProvinces();
 
@@ -25,5 +26,12 @@ class DistrictController extends Controller
         $districts = \Indonesia::findCity($request->id)->districts->pluck('name', 'id');
 
         return response()->json($districts);
+    }
+
+    public function partner(Request $request)
+    {
+        $partner = Partner::with('cost_rates')->find($request->id);
+
+        return response()->json($partner);
     }
 }

@@ -1,13 +1,14 @@
 <?php
 
 use App\Http\Controllers\backoffice\AuthController;
+use App\Http\Controllers\backoffice\CargoController;
 use App\Http\Controllers\backoffice\CostRateController;
 use App\Http\Controllers\backoffice\DashboardController;
 use App\Http\Controllers\backoffice\PartnerController;
 use App\Http\Controllers\backoffice\RoleController;
 use App\Http\Controllers\backoffice\UserController;
 use App\Http\Controllers\backoffice\WarehouseController;
-use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\AjaxController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,10 +26,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/tracking/{cargo}', function () {
+    return view('tracking');
+})->name('tracking');
+
 Route::prefix('/ajax')->group(function () {
-    Route::get('/province', [DistrictController::class, 'province'])->name('ajax.province');
-    Route::get('/cities', [DistrictController::class, 'cities'])->name('ajax.cities');
-    Route::get('/districts', [DistrictController::class, 'districts'])->name('ajax.districts');
+    Route::get('/province', [AjaxController::class, 'provinces'])->name('ajax.province');
+    Route::get('/cities', [AjaxController::class, 'cities'])->name('ajax.cities');
+    Route::get('/districts', [AjaxController::class, 'districts'])->name('ajax.districts');
+
+    Route::middleware('auth')->group(function () {
+        Route::get('/partner', [AjaxController::class, 'partner'])->name('ajax.partner');
+    });
 });
 
 Route::prefix('/bo')->group(function () {
@@ -37,6 +46,15 @@ Route::prefix('/bo')->group(function () {
 
     Route::middleware('auth')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+        Route::get('/shipments', [CargoController::class, 'index'])->name('shipments')->middleware('permission:view shipment');
+        Route::get('/shipments/pickup', [CargoController::class, 'createPickup'])->name('shipments.pickup.create')->middleware('permission:create pickup shipment');
+        Route::post('/shipments/pickup', [CargoController::class, 'storePickup'])->name('shipments.pickup.store')->middleware('permission:create pickup shipment');
+        Route::get('/shipments/{cargo}', [CargoController::class, 'show'])->name('shipments.show')->middleware('permission:view shipment');
+        Route::get('/shipments/{cargo}/print', [CargoController::class, 'printDelivery'])->name('shipments.delivery.print')->middleware('permission:view delivery shipment');
+        Route::get('/shipments/{cargo}/create', [CargoController::class, 'createDelivery'])->name('shipments.delivery.create')->middleware('permission:create delivery shipment');
+        Route::post('/shipments/{cargo}', [CargoController::class, 'storeDelivery'])->name('shipments.delivery.store')->middleware('permission:create delivery shipment');
+        Route::delete('/shipments/{cargoDetail}/destroy', [CargoController::class, 'destroyDelivery'])->name('shipments.delivery.destroy')->middleware('permission:delete delivery shipment');
 
         Route::get('/cost-rates', [CostRateController::class, 'index'])->name('cost-rates')->middleware('permission:view cost rate');
         Route::get('/cost-rates/create', [CostRateController::class, 'create'])->name('cost-rates.create')->middleware('permission:add cost rate');
@@ -68,6 +86,6 @@ Route::prefix('/bo')->group(function () {
 
         Route::get('/roles', [RoleController::class, 'index'])->name('roles')->middleware('permission:view admin role');
         Route::get('/roles/{role}/edit', [RoleController::class, 'edit'])->name('roles.edit')->middleware('permission:manage admin role');
-        Route::patch('/roles/{user}', [RoleController::class, 'update'])->name('roles.update')->middleware('permission:manage admin role');
+        Route::patch('/roles/{role}', [RoleController::class, 'update'])->name('roles.update')->middleware('permission:manage admin role');
     });
 });

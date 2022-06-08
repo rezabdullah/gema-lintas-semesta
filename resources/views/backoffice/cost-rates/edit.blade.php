@@ -161,6 +161,22 @@
                                         </span>
                                     @enderror
                                 </div>
+                                <div class="form-group">
+                                    <label for="transport_type">Tipe Pengiriman</label>
+                                    
+                                    <select class="form-control @error('transport_type') is-invalid @enderror" id="transport_type" name="transport_type">
+                                        <option value="">Pilih Tipe Pengiriman</option>
+                                        <option {{ $costRate->transport_type == 'DARAT' ? 'selected' : '' }}>DARAT</option>
+                                        <option {{ $costRate->transport_type == 'LAUT' ? 'selected' : '' }}>LAUT</option>
+                                        <option {{ $costRate->transport_type == 'UDARA' ? 'selected' : '' }}>UDARA</option>
+                                    </select>
+        
+                                    @error('transport_type')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
 

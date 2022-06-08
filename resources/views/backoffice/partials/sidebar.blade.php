@@ -8,25 +8,39 @@
 
     <hr class="sidebar-divider my-0">
 
-    <li class="nav-item active">
+    <li class="nav-item {{ request()->is('bo') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
         </a>
     </li>
 
-    <hr class="sidebar-divider">
+    @canany(['view shipment', 'create pickup shipment', 'create delivery shipment'])
+        <hr class="sidebar-divider">
 
-    <div class="sidebar-heading">
-        Orders
-    </div>
+        <div class="sidebar-heading">
+            Orders
+        </div>
 
-    <li class="nav-item">
-        <a class="nav-link" href="">
-            <i class="fas fa-fw fa-truck"></i>
-            <span>Cargo</span>
-        </a>
-    </li>
+        <li class="nav-item">
+            <a class="nav-link {{ request()->is('bo/shipments*') ? '' : 'collapsed' }}" href="#" data-toggle="collapse" data-target="#collapseShipments"
+                aria-expanded="{{ request()->is('bo/shipments*') ? 'true' : 'false' }}" aria-controls="collapseShipments">
+                <i class="fas fa-fw fa-truck"></i>
+                <span>Shipments</span>
+            </a>
+            <div id="collapseShipments" class="collapse {{ request()->is('bo/shipments*') ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    @can('create pickup shipment')
+                        <a class="collapse-item {{ request()->is('bo/shipments/pickup') ? 'active' : '' }}" href="{{ route('shipments.pickup.create') }}">Pickup</a>
+                    @endcan
+
+                    @canany(['view shipment', 'create delivery shipment'])
+                        <a class="collapse-item {{ request()->is('bo/shipments') ? 'active' : '' }}" href="{{ route('shipments') }}">List</a>
+                    @endcan
+                </div>
+            </div>
+        </li>
+    @endcan
 
     @canany(['view cost rate', 'add cost rate', 'edit cost rate', 'delete cost rate', 
     'view cost rate', 'add cost rate', 'edit cost rate', 'delete cost rate',
@@ -47,11 +61,11 @@
                 </a>
                 <div id="collapseCostRate" class="collapse {{ request()->is('bo/cost-rates*') ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        @can('add admin')
+                        @can('add cost rate')
                             <a class="collapse-item {{ request()->is('bo/cost-rates/create') ? 'active' : '' }}" href="{{ route('cost-rates.create') }}">New</a>
                         @endcan
 
-                        @canany(['view admin', 'edit admin', 'delete admin'])
+                        @canany(['view cost rate', 'edit cost rate', 'delete cost rate'])
                             <a class="collapse-item {{ request()->is('bo/cost-rates') ? 'active' : '' }}" href="{{ route('cost-rates') }}">List</a>
                         @endcan
                     </div>
@@ -68,11 +82,11 @@
                 </a>
                 <div id="collapsePartner" class="collapse {{ request()->is('bo/partners*') ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        @can('add admin')
+                        @can('add partner')
                             <a class="collapse-item {{ request()->is('bo/partners/create') ? 'active' : '' }}" href="{{ route('partners.create') }}">New</a>
                         @endcan
 
-                        @canany(['view admin', 'edit admin', 'delete admin'])
+                        @canany(['view partner', 'edit partner', 'delete partner'])
                             <a class="collapse-item {{ request()->is('bo/partners') ? 'active' : '' }}" href="{{ route('partners') }}">List</a>
                         @endcan
                     </div>
@@ -89,11 +103,11 @@
                 </a>
                 <div id="collapseWarehouse" class="collapse {{ request()->is('bo/warehouses*') ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        @can('add admin')
+                        @can('add warehouse')
                             <a class="collapse-item {{ request()->is('bo/warehouses/create') ? 'active' : '' }}" href="{{ route('warehouses.create') }}">New</a>
                         @endcan
 
-                        @canany(['view admin', 'edit admin', 'delete admin'])
+                        @canany(['view warehouse', 'edit warehouse', 'delete warehouse'])
                             <a class="collapse-item {{ request()->is('bo/warehouses') ? 'active' : '' }}" href="{{ route('warehouses') }}">List</a>
                         @endcan
                     </div>
@@ -131,7 +145,7 @@
         @endcan
         
         @canany(['view admin role', 'manage admin role'])
-            <li class="nav-item">
+            <li class="nav-item {{ request()->is('bo/roles*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('roles') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Roles</span>

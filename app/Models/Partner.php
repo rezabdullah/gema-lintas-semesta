@@ -18,4 +18,9 @@ class Partner extends Model
         'address',
         'status',
     ];
+
+    public function cost_rates()
+    {
+        return $this->hasMany(CostRate::class);
+    }
 }

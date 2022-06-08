@@ -32,6 +32,7 @@
                                     <th scope="col">Berat</th>
                                     <th scope="col">Ctg</th>
                                     <th scope="col">Biaya</th>
+                                    <th scope="col">Tipe</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -46,6 +47,7 @@
                                             <td>{{ $costRate->weight }}</td>
                                             <td>{{ $costRate->ctg_type }}</td>
                                             <td>{{ 'Rp '. number_format($costRate->cost, 0 ,",", ".") }}</td>
+                                            <td>{{ $costRate->transport_type }}</td>
                                             <td>
                                                 <a href="{{ route('cost-rates.edit', $costRate->id) }}" class="btn btn-primary btn-sm mb-1">Edit</a>
     
@@ -60,7 +62,7 @@
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td colspan="8" class="text-center">No data found</td>
+                                        <td colspan="9" class="text-center">No data found</td>
                                     </tr>
                                 @endif
                             </tbody>

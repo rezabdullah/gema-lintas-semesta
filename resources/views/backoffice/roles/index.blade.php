@@ -37,7 +37,7 @@
                                     <td>{{ $role->name }}</td>
                                     <td>
                                         @foreach ($role->permissions as $index => $permission)
-                                            {{ $permission->name .', ' }}
+                                            {{ $permission->name . ($index < count($role->permissions) - 1 ? ', ' : '') }}
                                         @endforeach
                                     </td>
                                     <td>

@@ -28,6 +28,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Email</th>
+                                    <th scope="col">Warehouse</th>
                                     <th scope="col">Role</th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -38,6 +39,7 @@
                                         <th scope="row">{{ ($index+1) }}</th>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
+                                        <td>{{ ($user->warehouse) ? $user->warehouse->city .", ". $user->warehouse->sub_district ." (". $user->warehouse->code .")" : "" }}</td>
                                         <td>
                                             @foreach ($user->roles as $role)
                                                 {{ $role->name }}

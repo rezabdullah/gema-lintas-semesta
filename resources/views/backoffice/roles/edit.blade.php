@@ -21,18 +21,20 @@
                     </div>
                     @endif
 
-                    <form action="{{ route('users.update', $role->id) }}" method="POST">
+                    <form action="{{ route('roles.update', $role->id) }}" method="POST">
                         @csrf
                         @method('PATCH')
 
                         <div class="form-group">
                             <label for="name">Permissions</label>
-                            {{-- <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="John Doe" value="{{ $user->name }}"> --}}
-                            @foreach ($permissions as $permissionAvailable)
-                                @foreach ($role->permissions as $permissionChoosed)
-                                <input type="checkbox" name="permissions[]" value="{{ $permissionAvailable->id }}"> {{ $permissionAvailable->name }} <br>
+
+                            <div class="row px-3">
+                                @foreach ($role->permissions as $permission)
+                                    <label class="mr-3" role="button">
+                                        <input type="checkbox" name="permissions[]" value="{{ $permission['id'] }}" {{ $permission['isChoosed'] ? 'checked' : '' }}> {{ $permission['name'] }}
+                                    </label>
                                 @endforeach
-                            @endforeach
+                            </div>
 
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -40,26 +42,6 @@
                                 </span>
                             @enderror
                         </div>
-                        {{-- <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="name@example.com" value="{{ $user->email }}">
-
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="emailConfirmation">Email Confirmation</label>
-                            <input type="email" class="form-control @error('emailConfirmation') is-invalid @enderror" id="emailConfirmation" name="emailConfirmation" placeholder="name@example.com" value="{{ $user->email }}">
-
-                            @error('emailConfirmation')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div> --}}
                         <div class="form-group">
                             <button class="btn btn-primary">Save</button>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backoffice;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Warehouse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -16,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::with('roles')->paginate(env('TABLE_PAGINATE'));
+        $users = User::with('roles')->with('warehouse')->paginate(env('TABLE_PAGINATE'));
 
         return view('backoffice.users.index', compact('users'));
     }
@@ -28,7 +29,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('backoffice.users.create');
+        $warehouses = Warehouse::all();
+
+        return view('backoffice.users.create', compact('warehouses'));
     }
 
     /**
@@ -43,6 +46,7 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email:rfc,dns|unique:users,email|same:emailConfirmation',
             'emailConfirmation' => 'required|email:rfc,dns',
+            'warehouse_id' => 'required|numeric|exists:warehouses,id',
         ]);
 
         $formRequest = array_merge(
@@ -80,7 +84,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('backoffice.users.edit', compact('user'));
+        $warehouses = Warehouse::all();
+
+        return view('backoffice.users.edit', compact('user', 'warehouses'));
     }
 
     /**
@@ -96,11 +102,13 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email:rfc,dns|unique:users,email,'.$user->id.'|same:emailConfirmation',
             'emailConfirmation' => 'required|email:rfc,dns',
+            'warehouse_id' => 'required|numeric|exists:warehouses,id',
         ]);
 
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
+            'warehouse_id' => $request->warehouse_id,
         ]);
 
         return redirect()->route('users.edit', $user->id)->with('success','Data successfully saved');

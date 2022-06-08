@@ -18,8 +18,33 @@ class RoleController extends Controller
 
     public function edit(Role $role)
     {
-        $permissions = Permission::all();
+        $permissionsAvailable = Permission::all();
 
-        return view('backoffice.roles.edit', compact('role', 'permissions'));
+        foreach ($permissionsAvailable as $key => $permission) {
+
+            $permission['isChoosed'] = false;
+        
+            foreach ($role->permissions as $rolePermission) {
+                if ($permission->id == $rolePermission->id) {
+                    $permission['isChoosed'] = true;
+                    break;
+                }
+            }
+        }
+
+        $role->permissions = $permissionsAvailable;
+
+        return view('backoffice.roles.edit', compact('role'));
+    }
+
+    public function update(Request $request, Role $role)
+    {
+        $request->validate([
+            'permissions' => 'required|array',
+        ]);
+
+        $role->syncPermissions($request->permissions);
+
+        return redirect()->route('roles.edit', $role->id)->with('success', 'Data berhasil diupdate');
     }
 }

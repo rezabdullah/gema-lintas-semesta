@@ -20,6 +20,7 @@ class CostRate extends Model
         'weight',
         'ctg_type',
         'cost',
+        'transport_type',
     ];
 
     public function partner()

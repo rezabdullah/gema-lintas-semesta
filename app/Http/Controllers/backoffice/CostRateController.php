@@ -52,6 +52,7 @@ class CostRateController extends Controller
             'weight' => 'required|numeric',
             'ctg_type' => 'required',
             'cost' => 'required',
+            'transport_type' => 'required',
         ]);
 
         $sender_sub_district = strpos($request->sender_sub_district, '#') > 0 ? explode('#', $request->sender_sub_district)[1] : $request->sender_sub_district;

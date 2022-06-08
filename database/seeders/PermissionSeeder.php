@@ -15,15 +15,15 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         $permissions = collect([
-            'view payment method', 'add payment method', 'edit payment method', 'delete payment method', 
-            'view admin', 'add admin', 'edit admin', 'delete admin', 
-            'view admin role', 'manage admin role', 'view admin permission', 
-            'manage admin permission', 'view product', 'add product', 
-            'edit product', 'delete product', 'view product role', 'view product permission', 
-            'manage product role', 'manage product permission', 
-            'view template', 'add template', 'edit template', 'delete template', 
-            'view order', 'manage order', 'view discount', 
-            'add discount', 'edit discount', 'delete discount',
+            'view shipment', 'create pickup shipment', 'create pickup shipment', 
+            'view shipment', 'view delivery shipment', 'create delivery shipment', 
+            'create delivery shipment', 'delete delivery shipment', 'view cost rate', 
+            'add cost rate', 'add cost rate', 'edit cost rate', 'edit cost rate', 
+            'delete cost rate', 'view partner', 'add partner', 'add partner', 'edit partner', 
+            'edit partner', 'delete partner', 'view warehouse', 'add warehouse', 'add warehouse', 
+            'edit warehouse', 'edit warehouse', 'delete warehouse', 'view admin', 'add admin', 
+            'add admin', 'edit admin', 'edit admin', 'delete admin', 'view admin role', 
+            'manage admin role', 'manage admin role'
         ]);
 
         $permissions->each(function( $permission ) {

@@ -26,6 +26,24 @@
                         @method('PATCH')
 
                         <div class="form-group">
+                            <label for="warehouse_id">Warehouse</label>
+                            <select class="form-control @error('warehouse_id') is-invalid @enderror" id="warehouse_id" name="warehouse_id">
+                                <option value="">Pilih Warehouse</option>
+
+                                @if (count($warehouses) > 0)
+                                    @foreach($warehouses as $index => $warehouse)
+                                        <option value="{{ $warehouse->id }}" {{ $warehouse->id == $user->warehouse_id ? 'selected' : '' }}>{{ $warehouse->city .', '. $warehouse->sub_district ." (". $warehouse->code .")" }}</option>
+                                    @endforeach
+                                @endif
+                            </select>
+
+                            @error('warehouse_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label for="name">Fullname</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="John Doe" value="{{ $user->name }}">
 
