@@ -9,6 +9,7 @@ use App\Http\Controllers\backoffice\RoleController;
 use App\Http\Controllers\backoffice\UserController;
 use App\Http\Controllers\backoffice\WarehouseController;
 use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,13 +23,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () { return view('index'); })->name('front.index');
+Route::get('/profil', function () { return view('profile'); })->name('front.profile');
+Route::get('/layanan', function () { return view('service'); })->name('front.service');
+Route::get('/ketentuan', function () { return view('terms'); })->name('front.terms');
+Route::get('/kontak', function () { return view('contact'); })->name('front.contact');
 
-Route::get('/tracking/{cargo}', function () {
-    return view('tracking');
-})->name('tracking');
+Route::post('/tracking', [FrontController::class, 'trackingPost'])->name('front.tracking.post');
+Route::get('/tracking/{cargo}', [FrontController::class, 'trackingGet'])->name('front.tracking.get');
 
 Route::prefix('/ajax')->group(function () {
     Route::get('/province', [AjaxController::class, 'provinces'])->name('ajax.province');
