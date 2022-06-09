@@ -135,13 +135,7 @@
     </div>
 @endsection
 
-@push('additional-scripts')
-    <!-- Page level plugins -->
-    <script src="{{ asset('sb-admin-2/vendor/chart.js/Chart.min.js') }}"></script>
-
-    <!-- Page level custom scripts -->
-    {{-- <script src="{{ asset('sb-admin-2/js/demo/chart-area-demo.js') }}"></script> --}}
-    
+@push('additional-scripts')    
     <script>
     // Set new default font family and font color to mimic Bootstrap's default styling
     Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
