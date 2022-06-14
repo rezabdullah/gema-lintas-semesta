@@ -9,7 +9,7 @@
 			<form action="{{ route('front.tracking.post') }}" method="POST" class="d-flex">
 				@csrf
 
-				<div class="d-inline" style="width: 30%;">
+				<div class="d-inline w-50" style="">
 					<input type="text" class="form-control w-100 p-3 @if(old('tracking_number')) is-invalid @endif" name="tracking_number" placeholder="Tracking Number" value="{{ old('tracking_number') }}" style="border-top-right-radius: 0; border-bottom-right-radius: 0;" required>
 
 					@if ($errors->has('tracking_number'))
