@@ -18,7 +18,7 @@ class DashboardController extends Controller
                 ->whereColumn('cargo_id', 'cargos.id')
                 ->latest()
                 ->limit(1);
-        }, 'REQUEST-PICKUP')->count();
+        }, 'REQUEST-PICKUP')->groupBy('cargos.id')->get()->count();
 
         $atWarehouse = Cargo::select('cargos.id')
         ->join('cargo_details', 'cargos.id', 'cargo_details.cargo_id')
@@ -28,7 +28,7 @@ class DashboardController extends Controller
                 ->whereColumn('cargo_id', 'cargos.id')
                 ->latest()
                 ->limit(1);
-        }, 'RECEIVED-AT-WAREHOUSE')->count();
+        }, 'RECEIVED-AT-WAREHOUSE')->groupBy('cargos.id')->get()->count();
 
         $atWarehouse = Cargo::select('cargos.id')
         ->join('cargo_details', 'cargos.id', 'cargo_details.cargo_id')
@@ -38,7 +38,7 @@ class DashboardController extends Controller
                 ->whereColumn('cargo_id', 'cargos.id')
                 ->latest()
                 ->limit(1);
-        }, 'RECEIVED-AT-WAREHOUSE')->count();
+        }, 'RECEIVED-AT-WAREHOUSE')->groupBy('cargos.id')->get()->count();
 
         $deliveringToClient = Cargo::select('cargos.id')
         ->join('cargo_details', 'cargos.id', 'cargo_details.cargo_id')
@@ -48,7 +48,7 @@ class DashboardController extends Controller
                 ->whereColumn('cargo_id', 'cargos.id')
                 ->latest()
                 ->limit(1);
-        }, 'DELIVERING-BY-COURIER')->count();
+        }, 'DELIVERING-BY-COURIER')->groupBy('cargos.id')->get()->count();
 
         $delivered = Cargo::select('cargos.id')
         ->join('cargo_details', 'cargos.id', 'cargo_details.cargo_id')
@@ -58,12 +58,59 @@ class DashboardController extends Controller
                 ->whereColumn('cargo_id', 'cargos.id')
                 ->latest()
                 ->limit(1);
-        }, 'DELIVERED')->count();
+        }, 'DELIVERED')->groupBy('cargos.id')
+        ->get()->count();
 
-        $earningsAllTime = Cargo::sum('total_price');
-        $earningsThisMonth = Cargo::where('created_at', '>=', now()->startOfMonth())->where('created_at', '<=', now()->endOfMonth())->sum('total_price');
-        $earningsThisWeek = Cargo::where('created_at', '>=', now()->startOfWeek())->where('created_at', '<=', now()->endOfWeek())->sum('total_price');
-        $earningsThisDay = Cargo::where('created_at', '>=', now()->startOfDay())->where('created_at', '<=', now()->endOfDay())->sum('total_price');
+        $earningsAllTime = Cargo::select('cargos.id', 'cargos.total_price')
+        ->join('cargo_details', 'cargos.id', 'cargo_details.cargo_id')
+        ->where(function($query) {
+            $query->select('delivery_status')
+                ->from('cargo_details')
+                ->whereColumn('cargo_id', 'cargos.id')
+                ->latest()
+                ->limit(1);
+        }, 'DELIVERED')
+        ->groupBy('cargos.id')
+        ->get()->sum('total_price');
+
+        $earningsThisMonth = Cargo::select('cargos.id', 'cargos.total_price')
+        ->join('cargo_details', 'cargos.id', 'cargo_details.cargo_id')
+        ->where(function($query) {
+            $query->select('delivery_status')
+                ->from('cargo_details')
+                ->whereColumn('cargo_id', 'cargos.id')
+                ->latest()
+                ->limit(1);
+        }, 'DELIVERED')
+        ->where('cargos.created_at', '>=', now()->startOfMonth())->where('cargos.created_at', '<=', now()->endOfMonth())
+        ->groupBy('cargos.id')
+        ->get()->sum('total_price');
+
+        $earningsThisWeek = Cargo::select('cargos.id', 'cargos.total_price')
+        ->join('cargo_details', 'cargos.id', 'cargo_details.cargo_id')
+        ->where(function($query) {
+            $query->select('delivery_status')
+                ->from('cargo_details')
+                ->whereColumn('cargo_id', 'cargos.id')
+                ->latest()
+                ->limit(1);
+        }, 'DELIVERED')
+        ->where('cargos.created_at', '>=', now()->startOfWeek())->where('cargos.created_at', '<=', now()->endOfWeek())
+        ->groupBy('cargos.id')
+        ->get()->sum('total_price');
+
+        $earningsThisDay = Cargo::select('cargos.id', 'cargos.total_price')
+        ->join('cargo_details', 'cargos.id', 'cargo_details.cargo_id')
+        ->where(function($query) {
+            $query->select('delivery_status')
+                ->from('cargo_details')
+                ->whereColumn('cargo_id', 'cargos.id')
+                ->latest()
+                ->limit(1);
+        }, 'DELIVERED')
+        ->where('cargos.created_at', '>=', now()->startOfDay())->where('cargos.created_at', '<=', now()->endOfDay())
+        ->groupBy('cargos.id')
+        ->get()->sum('total_price');
 
         return view('backoffice.dashboard.index', compact(
             'pickupRequest', 'atWarehouse', 

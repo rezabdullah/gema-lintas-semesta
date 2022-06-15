@@ -103,7 +103,7 @@
                                     </table>
                                 </td>
                                 <td style="width: 30%; vertical-align: top; text-align: right;">
-                                    {{ QrCode::size(80)->generate(route('tracking', $cargo->id)) }}
+                                    {{ QrCode::size(80)->generate(route('front.tracking.get', $cargo->id)) }}
                                 </td>
                             </tr>
                         </table>

@@ -53,7 +53,7 @@
                             </table>
                         </div>
                         <div class="col-12 col-md-4 px-1">
-                            {{ QrCode::generate( route('tracking', $cargo->id)) }}
+                            {{ QrCode::generate( route('front.tracking.get', $cargo->id)) }}
                         </div>
                     </div>
 
