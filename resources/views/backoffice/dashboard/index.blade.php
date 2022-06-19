@@ -113,7 +113,7 @@
                         @csrf
 
                         <div class="row">
-                            <div class="col-md-10 pr-0">
+                            <div class="col-9 pr-0">
                                 <div class="form-group">
                                     <input type="text" class="form-control w-100 @if(old('tracking_number')) is-invalid @endif" name="tracking_number" placeholder="Tracking Number" value="{{ old('tracking_number') }}" style="border-top-right-radius: 0; border-bottom-right-radius: 0;" required>
 
@@ -122,9 +122,11 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="col-md-2 pl-0">
+                            <div class="col-3 pl-0">
                                 <div class="form-group">
-                                    <button class="btn btn-primary w-100" style="border-top-left-radius: 0; border-bottom-left-radius: 0;">Search</button>
+                                    <button class="btn btn-primary w-100" style="border-top-left-radius: 0; border-bottom-left-radius: 0;">
+                                        <i class="fas fa-search"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
