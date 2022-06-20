@@ -23,9 +23,9 @@ class PermissionSeeder extends Seeder
             'edit partner', 'delete partner', 'view warehouse', 'add warehouse', 'add warehouse', 
             'edit warehouse', 'edit warehouse', 'delete warehouse', 'view admin', 'add admin', 
             'add admin', 'edit admin', 'edit admin', 'delete admin', 'view admin role', 
-            'manage admin role', 'manage admin role'
+            'manage admin role', 'manage admin role', 'view delivered report', 'view delivering report', 
+            'view at-warehouse report', 'view partner report', 'view admin report'
         ]);
-
         $permissions->each(function( $permission ) {
             if( count(Permission::where('name', $permission)->get()) < 1 ){
                 Permission::create([

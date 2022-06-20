@@ -9,6 +9,7 @@ use App\Http\Controllers\backoffice\RoleController;
 use App\Http\Controllers\backoffice\UserController;
 use App\Http\Controllers\backoffice\WarehouseController;
 use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\backoffice\ReportController;
 use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
 
@@ -58,6 +59,12 @@ Route::prefix('/bo')->group(function () {
         Route::get('/shipments/{cargo}/create', [CargoController::class, 'createDelivery'])->name('shipments.delivery.create')->middleware('permission:create delivery shipment');
         Route::post('/shipments/{cargo}', [CargoController::class, 'storeDelivery'])->name('shipments.delivery.store')->middleware('permission:create delivery shipment');
         Route::delete('/shipments/{cargoDetail}/destroy', [CargoController::class, 'destroyDelivery'])->name('shipments.delivery.destroy')->middleware('permission:delete delivery shipment');
+
+        Route::get('/reports-delivered', [ReportController::class, 'delivered'])->name('reports.delivered')->middleware('permission:view delivered report');
+        Route::get('/reports-delivering', [ReportController::class, 'delivering'])->name('reports.delivering')->middleware('permission:view delivering report');
+        Route::get('/reports-at-warehouse', [ReportController::class, 'atWarehouse'])->name('reports.at-warehouse')->middleware('permission:view at-warehouse report');
+        Route::get('/reports-partner', [ReportController::class, 'partner'])->name('reports.partner')->middleware('permission:view partner report');
+        Route::get('/reports-admin', [ReportController::class, 'admin'])->name('reports.admin')->middleware('permission:view admin report');
 
         Route::get('/cost-rates', [CostRateController::class, 'index'])->name('cost-rates')->middleware('permission:view cost rate');
         Route::get('/cost-rates/create', [CostRateController::class, 'create'])->name('cost-rates.create')->middleware('permission:add cost rate');

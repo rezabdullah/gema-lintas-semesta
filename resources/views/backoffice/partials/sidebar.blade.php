@@ -42,6 +42,88 @@
         </li>
     @endcan
 
+    @canany(['view delivered report', 'view delivering report', 'view at-warehouse report', 'view partner report', 'view admin report'])
+        <hr class="sidebar-divider">
+
+        <div class="sidebar-heading">
+            Reports
+        </div>
+
+        <li class="nav-item">
+            <a class="nav-link {{ request()->is('bo/reports*') ? '' : 'collapsed' }}" href="#" data-toggle="collapse" data-target="#collapseReports"
+                aria-expanded="{{ request()->is('bo/reports*') ? 'true' : 'false' }}" aria-controls="collapseReports">
+                <i class="fas fa-fw fa-chart-bar"></i>
+                <span>All Reports</span>
+            </a>
+            <div id="collapseReports" class="collapse {{ request()->is('bo/reports*') ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    @can('view delivered report')
+                        <a class="collapse-item {{ request()->is('bo/reports-delivered') ? 'active' : '' }}" href="{{ route('reports.delivered') }}">Delivered</a>
+                    @endcan
+
+                    @can('view delivering report')
+                        <a class="collapse-item {{ request()->is('bo/reports-delivering') ? 'active' : '' }}" href="{{ route('reports.delivering') }}">Delivering</a>
+                    @endcan
+
+                    @can('view at-warehouse report')
+                        <a class="collapse-item {{ request()->is('bo/reports-at-warehouse') ? 'active' : '' }}" href="{{ route('reports.at-warehouse') }}">At Warehouse</a>
+                    @endcan
+
+                    @can('view partner report')
+                        <a class="collapse-item {{ request()->is('bo/reports-partner') ? 'active' : '' }}" href="{{ route('reports.partner') }}">Partner</a>
+                    @endcan
+
+                    @can('view admin report')
+                        <a class="collapse-item {{ request()->is('bo/reports-admin') ? 'active' : '' }}" href="{{ route('reports.admin') }}">Admin</a>
+                    @endcan
+                </div>
+            </div>
+        </li>
+    @endcan
+
+    {{-- @canany(['view shipment', 'create pickup shipment', 'create delivery shipment'])
+        <hr class="sidebar-divider">
+
+        <div class="sidebar-heading">
+            Reports
+        </div>
+
+        <li class="nav-item {{ request()->is('bo/delivered-reports') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('reports.delivered') }}">
+                <i class="fas fa-fw fa-chart-bar"></i>
+                <span>Delivered</span>
+            </a>
+        </li>
+
+        <li class="nav-item {{ request()->is('bo/delivering-reports') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('reports.delivering') }}">
+                <i class="fas fa-fw fa-chart-bar"></i>
+                <span>Delivering</span>
+            </a>
+        </li>
+
+        <li class="nav-item {{ request()->is('bo/at-warehouse-reports') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('reports.at-warehouse') }}">
+                <i class="fas fa-fw fa-chart-bar"></i>
+                <span>At Warehouse</span>
+            </a>
+        </li>
+
+        <li class="nav-item {{ request()->is('bo/partner-reports') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('reports.partner') }}">
+                <i class="fas fa-fw fa-chart-bar"></i>
+                <span>Partner</span>
+            </a>
+        </li>
+
+        <li class="nav-item {{ request()->is('bo/employee-reports') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('reports.employee') }}">
+                <i class="fas fa-fw fa-chart-bar"></i>
+                <span>Employee</span>
+            </a>
+        </li>
+    @endcan --}}
+
     @canany(['view cost rate', 'add cost rate', 'edit cost rate', 'delete cost rate', 
     'view cost rate', 'add cost rate', 'edit cost rate', 'delete cost rate',
     'view partner', 'add partner', 'edit partner', 'delete partner',
