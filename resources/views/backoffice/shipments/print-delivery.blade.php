@@ -29,7 +29,7 @@
                         <table class="w-100 mb-3">
                             <tr>
                                 <td style="width: 25%; vertical-align: middle;">
-                                    <p style="font-size: 23px; font-weight: bold;">delivery order</p>
+                                    <p style="font-size: 23px; font-weight: bold;">invoice</p>
                                 </td>
                                 <td style="width: 60%; vertical-align: top; font-size: 13px;">
                                     <p class="mb-0">Wisma Setia Ciliwung Blok A. 108 Jl. Bukit Duri Tanjakan, Tebet, Jakarta Selatan</p>
