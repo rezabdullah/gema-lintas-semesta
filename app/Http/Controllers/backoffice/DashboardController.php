@@ -48,7 +48,14 @@ class DashboardController extends Controller
                 ->whereColumn('cargo_id', 'cargos.id')
                 ->latest()
                 ->limit(1);
-        }, 'DELIVERING-BY-COURIER')->groupBy('cargos.id')->get()->count();
+        }, 'DELIVERING-BY-COURIER')
+        ->orWhere(function($query) {
+            $query->select('delivery_status')
+                ->from('cargo_details')
+                ->whereColumn('cargo_id', 'cargos.id')
+                ->latest()
+                ->limit(1);
+        }, 'DELIVERING')->groupBy('cargos.id')->get()->count();
 
         $delivered = Cargo::select('cargos.id')
         ->join('cargo_details', 'cargos.id', 'cargo_details.cargo_id')
