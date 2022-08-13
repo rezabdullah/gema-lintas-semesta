@@ -91,7 +91,7 @@ class CargoController extends Controller
     {
         $request->validate([
             'description' => 'required',
-            'delivery_status' => 'required|in:PICKED-UP,DELIVERING,RECEIVED-AT-WAREHOUSE,DELIVERED,DELIVERING-BY-COURIER',
+            'delivery_status' => 'required|in:PICKED-UP,PACKING,DELIVERING,RECEIVED-AT-WAREHOUSE,DELIVERED,DELIVERING-BY-COURIER',
         ]);
 
         CargoDetail::create([

@@ -20,6 +20,7 @@
                                 <option value="">Pilih Status</option>
                                 <option value="PICKED-UP">PICKED UP</option>
                                 <option value="RECEIVED-AT-WAREHOUSE">RECEIVED AT WAREHOUSE</option>
+                                <option value="PACKING">PACKING</option>
                                 <option value="DELIVERING">DELIVERING</option>
                                 <option value="DELIVERING-BY-COURIER">DELIVERING BY COURIER</option>
                                 <option value="DELIVERED">DELIVERED</option>
