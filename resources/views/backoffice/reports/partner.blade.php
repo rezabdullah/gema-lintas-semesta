@@ -21,7 +21,30 @@
                 </div>
                 <div class="card-body">
                     <div class="w-100 mx-auto" id="print-area">
-                        <h6 id="table-title" class="h4 mb-3 text-gray-800">Partner Reports</h6>
+                        <table class="w-100 mb-3">
+                            <tr>
+                                <td style="width: 25%; vertical-align: middle;">
+                                    <p style="font-size: 23px; font-weight: bold;">pelanggan</p>
+                                </td>
+                                <td style="width: 60%; vertical-align: top; font-size: 13px;">
+                                    <p class="mb-0">Wisma Setia Ciliwung Blok A. 108 Jl. Bukit Duri Tanjakan, Tebet, Jakarta Selatan</p>
+                                    <p class="mb-0">Telp: 021-83783267</p>
+                                    <p class="mb-0">Email: gema.express@yahoo.com</p>
+                                    <p class="mb-0">www.gemalintassemesta.com</p>
+                                </td>
+                                <td style="width: 15%; vertical-align: top; text-align: right;">
+                                    <img src="{{ asset('images/gema-logo.png') }}">
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table class="w-100 mb-3">
+                            <tr>
+                                <td colspan="3" class="text-right">
+                                    <p style="font-size: 16px; font-weight: bold;">{{ date("j F Y")}}</p>
+                                </td>
+                            </tr>
+                        </table>
 
                         <div class="table-responsive">
                             <table class="table table-striped">
@@ -55,6 +78,37 @@
                                 </tbody>
                             </table>
                         </div>
+
+                        <table class="w-100 mb-3">
+                            <tr>
+                                <td style="width:30%; vertical-align: top; text-align: center">
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    ({{ Auth::user()->name }})
+                                    <br>
+                                    <b>Pegawai</b>
+                                </td>
+                                <td style="width:13.3%; vertical-align: top; text-align: center">
+                                </td>
+                                <td style="width:13.3%; vertical-align: top; text-align: center">
+                                </td>
+                                <td style="width:13.3%; vertical-align: top; text-align: center">
+                                </td>
+                                <td style="width:30%; vertical-align: top; text-align: center">
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    (Andi Santoso)
+                                    <br>
+                                    <b>Direktur</b>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
