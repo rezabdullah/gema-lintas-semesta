@@ -23,7 +23,14 @@ class ReportController extends Controller
                 ->whereColumn('cargo_id', 'cargos.id')
                 ->latest()
                 ->limit(1);
-        }, 'DELIVERING-BY-COURIER')->groupBy('cargos.id')->get();
+        }, 'DELIVERING-BY-COURIER')
+        ->orWhere(function($query) {
+            $query->select('delivery_status')
+                ->from('cargo_details')
+                ->whereColumn('cargo_id', 'cargos.id')
+                ->latest()
+                ->limit(1);
+        }, 'DELIVERING')->groupBy('cargos.id')->get();
 
         return view('backoffice.reports.delivering', compact('cargos'));
     }

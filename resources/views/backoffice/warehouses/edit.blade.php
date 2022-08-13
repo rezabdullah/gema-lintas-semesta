@@ -1,6 +1,6 @@
 @extends('backoffice.layouts.main', [
-    'title' => 'Update warehouse',
-    'contentTitle' => 'Warehouses'
+    'title' => 'Update Gudang',
+    'contentTitle' => 'Gudang'
 ])
 
 @section('content-page')
@@ -36,7 +36,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="address">Address</label>
+                            <label for="address">Alamat</label>
                             <textarea rows="3" style="resize: none;" class="form-control @error('address') is-invalid @enderror" id="address" name="address" placeholder="Wisma Setia Tjiliwung Jl. Bukit Duri Tanjakan No. 54">{{ $warehouse->address }}</textarea>
 
                             @error('address')

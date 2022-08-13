@@ -1,6 +1,6 @@
 @extends('backoffice.layouts.main', [
-    'title' => 'Add new partner',
-    'contentTitle' => 'Partners'
+    'title' => 'Buat Pelanggan Baru',
+    'contentTitle' => 'Pelanggan'
 ])
 
 @section('content-page')
@@ -8,7 +8,7 @@
         <div class="col-12 col-lg-7">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Add new</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Buat baru</h6>
                 </div>
                 <div class="card-body">
                     @if(Session::has('success'))

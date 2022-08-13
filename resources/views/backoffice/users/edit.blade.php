@@ -1,6 +1,6 @@
 @extends('backoffice.layouts.main', [
-    'title' => 'Update user',
-    'contentTitle' => 'Users'
+    'title' => 'Update Pegawai',
+    'contentTitle' => 'Pegawai'
 ])
 
 @section('content-page')
@@ -26,9 +26,9 @@
                         @method('PATCH')
 
                         <div class="form-group">
-                            <label for="warehouse_id">Warehouse</label>
+                            <label for="warehouse_id">Gudang</label>
                             <select class="form-control @error('warehouse_id') is-invalid @enderror" id="warehouse_id" name="warehouse_id">
-                                <option value="">Pilih Warehouse</option>
+                                <option value="">Pilih Gudang</option>
 
                                 @if (count($warehouses) > 0)
                                     @foreach($warehouses as $index => $warehouse)

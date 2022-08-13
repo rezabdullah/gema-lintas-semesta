@@ -1,11 +1,11 @@
 @extends('backoffice.layouts.main', [
-    'title' => 'Update cost rate',
-    'contentTitle' => 'Cost Rates'
+    'title' => 'Update Harga Pengiriman',
+    'contentTitle' => 'Harga Pengiriman'
 ])
 
 @section('content-page')
     <div class="row">
-        <div class="col-12 col-lg-7">
+        <div class="col-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Edit</h6>
@@ -28,9 +28,9 @@
                         <div class="row">
                             <div class="col-12 col-lg-6">
                                 <div class="form-group">
-                                    <label for="partner_id">Partner</label>
+                                    <label for="partner_id">Pelanggan</label>
                                     <select class="form-control @error('partner_id') is-invalid @enderror" id="partner_id" name="partner_id">
-                                        <option value="">Semua Partner</option>
+                                        <option value="">Semua Pelanggan</option>
         
                                         @if (count($partners) > 0)
                                             @foreach($partners as $index => $partner)

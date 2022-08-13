@@ -1,6 +1,6 @@
 @extends('backoffice.layouts.main', [
-    'title' => 'Add new warehouse',
-    'contentTitle' => 'Warehouses'
+    'title' => 'Buat Gudang Baru',
+    'contentTitle' => 'Gudang'
 ])
 
 @section('content-page')
@@ -8,7 +8,7 @@
         <div class="col-12 col-lg-7">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Add new</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Buat baru</h6>
                 </div>
                 <div class="card-body">
                     @if(Session::has('success'))
@@ -40,7 +40,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="address">Address</label>
+                            <label for="address">Alamat</label>
                             <textarea rows="3" style="resize: none;" class="form-control @error('address') is-invalid @enderror" id="address" name="address" placeholder="Wisma Setia Tjiliwung Jl. Bukit Duri Tanjakan No. 54">{{ old('address') }}</textarea>
 
                             @error('address')

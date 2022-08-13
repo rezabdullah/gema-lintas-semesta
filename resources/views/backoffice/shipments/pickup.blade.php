@@ -1,6 +1,6 @@
 @extends('backoffice.layouts.main', [
-    'title' => 'Pickup shipment',
-    'contentTitle' => 'Shipment',
+    'title' => 'Buat Baru Resi',
+    'contentTitle' => 'Resi',
 ])
 
 @section('content-page')
@@ -8,7 +8,7 @@
         <div class="col-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Pickup</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Buat Baru</h6>
                 </div>
                 <div class="card-body">
                     @if(Session::has('success'))

@@ -1,6 +1,6 @@
 @extends('backoffice.layouts.main', [
-    'title' => 'Shipment Detail',
-    'contentTitle' => 'Shipment Detail'
+    'title' => 'Detail Resi',
+    'contentTitle' => 'Detail Resi'
 ])
 
 @section('content-page')
@@ -9,7 +9,7 @@
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <div class="row px-2 justify-content-between align-items-center">
-                        <h6 class="m-0 font-weight-bold text-primary">{{ 'Shipment Detail of ' . $cargo->id }}</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">{{ 'Detail Resi ' . $cargo->id }}</h6>
 
                         <div class="col-auto">
                             <a href="{{ route('shipments') }}" class="btn btn-sm btn-default mr-2">
@@ -119,10 +119,10 @@
                     @endif
 
                     <div class="row px-2 mb-4">
-                        <h2 class="h5 my-0 mr-3 text-gray-800">Shipment Records</h2>
+                        <h2 class="h5 my-0 mr-3 text-gray-800">Riwayat Resi</h2>
 
                         @if ($cargo->cargoDetails[0]->delivery_status != 'DELIVERED')
-                            <a href="{{ route('shipments.delivery.create', $cargo->id) }}" class="btn btn-primary btn-sm">Add Shipment Record</a>
+                            <a href="{{ route('shipments.delivery.create', $cargo->id) }}" class="btn btn-primary btn-sm">Tambah Riwayat Resi</a>
                         @endif
                     </div>
 

@@ -1,6 +1,6 @@
 @extends('backoffice.layouts.main', [
-    'title' => 'Shipment list',
-    'contentTitle' => 'Shipments'
+    'title' => 'list Resi',
+    'contentTitle' => 'Resi'
 ])
 
 @section('content-page')
@@ -8,7 +8,7 @@
         <div class="col-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">List Data</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">List</h6>
                 </div>
                 <div class="card-body">
                     @if(Session::has('success'))
@@ -51,12 +51,12 @@
                                             <td>
                                                 <a href="{{ route('shipments.show', $cargo->id) }}" class="btn btn-primary btn-sm mb-1 d-block" style="font-size: 11.5px;">
                                                     <i class="fas fa-list mr-2"></i>
-                                                    Details
+                                                    Detail
                                                 </a>
                                                 
                                                 <a href="{{ route('shipments.delivery.print', $cargo->id) }}" class="btn btn-success btn-sm mb-1 d-block" style="font-size: 11.5px;">
                                                     <i class="fas fa-print mr-2"></i>
-                                                    Delivery Order
+                                                    Form Penagihan
                                                 </a>
                                             </td>
                                         </tr>

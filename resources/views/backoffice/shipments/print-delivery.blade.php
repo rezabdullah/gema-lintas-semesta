@@ -1,6 +1,6 @@
 @extends('backoffice.layouts.main', [
-    'title' => 'Print Shipment Detail',
-    'contentTitle' => 'Shipment Detail'
+    'title' => 'Print Form Penagihan',
+    'contentTitle' => 'Form Penagihan'
 ])
 
 @section('content-page')
@@ -9,7 +9,7 @@
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <div class="row px-2 justify-content-between align-items-center">
-                        <h6 class="m-0 font-weight-bold text-primary">{{ 'Print preview of ' . $cargo->id }}</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">{{ 'Print Form Penagihan ' . $cargo->id }}</h6>
 
                         <div class="col-auto">
                             <a href="{{ route('shipments') }}" class="btn btn-sm btn-default mr-2">
@@ -29,7 +29,7 @@
                         <table class="w-100 mb-3">
                             <tr>
                                 <td style="width: 25%; vertical-align: middle;">
-                                    <p style="font-size: 23px; font-weight: bold;">invoice</p>
+                                    <p style="font-size: 23px; font-weight: bold;">penagihan</p>
                                 </td>
                                 <td style="width: 60%; vertical-align: top; font-size: 13px;">
                                     <p class="mb-0">Wisma Setia Ciliwung Blok A. 108 Jl. Bukit Duri Tanjakan, Tebet, Jakarta Selatan</p>

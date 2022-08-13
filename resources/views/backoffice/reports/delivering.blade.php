@@ -1,6 +1,6 @@
 @extends('backoffice.layouts.main', [
-    'title' => 'Delivering Reports',
-    'contentTitle' => 'Delivering'
+    'title' => 'Laporan Barang Dikirim',
+    'contentTitle' => 'Laporan Barang Dikirim'
 ])
 
 @section('content-page')
@@ -9,7 +9,7 @@
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <div class="row px-2 justify-content-between align-items-center">
-                        <h6 class="m-0 font-weight-bold text-primary">Reports</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Laporan</h6>
 
                         <div class="col-auto">
                             <button class="btn btn-sm btn-primary" onclick="window.print()">

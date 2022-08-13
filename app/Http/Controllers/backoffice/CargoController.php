@@ -72,7 +72,7 @@ class CargoController extends Controller
             'delivery_status' => 'REQUEST-PICKUP',
         ]);
         
-        return redirect()->route('shipments.pickup.create')->with('success', 'Shipment berhasil ditambahkan');
+        return redirect()->route('shipments.pickup.create')->with('success', 'Resi baru berhasil ditambahkan');
     }
 
     public function printDelivery(Cargo $cargo)
@@ -102,13 +102,13 @@ class CargoController extends Controller
             'delivery_status' => $request->delivery_status,
         ]);
 
-        return redirect()->route('shipments.show', $cargo->id)->with('success', 'Shipment record berhasil ditambahkan');
+        return redirect()->route('shipments.show', $cargo->id)->with('success', 'Riwayat resi berhasil ditambahkan');
     }
 
     public function destroyDelivery(CargoDetail $cargoDetail)
     {
         $cargoDetail->delete();
 
-        return redirect()->route('shipments.show', $cargoDetail->cargo_id)->with('success', 'Shipment record berhasil dihapus');
+        return redirect()->route('shipments.show', $cargoDetail->cargo_id)->with('success', 'Riwayat resi berhasil dihapus');
     }
 }

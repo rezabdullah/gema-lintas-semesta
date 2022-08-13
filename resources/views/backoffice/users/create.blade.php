@@ -1,6 +1,6 @@
 @extends('backoffice.layouts.main', [
-    'title' => 'Add new user',
-    'contentTitle' => 'Users'
+    'title' => 'Buat Pegawai Baru',
+    'contentTitle' => 'Pegawai'
 ])
 
 @section('content-page')
@@ -8,7 +8,7 @@
         <div class="col-12 col-lg-7">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Add new</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Buat baru</h6>
                 </div>
                 <div class="card-body">
                     @if(Session::has('success'))
@@ -30,9 +30,9 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="warehouse_id">Warehouse</label>
+                            <label for="warehouse_id">Gudang</label>
                             <select class="form-control @error('warehouse_id') is-invalid @enderror" id="warehouse_id" name="warehouse_id">
-                                <option value="">Pilih Warehouse</option>
+                                <option value="">Pilih Gudang</option>
 
                                 @if (count($warehouses) > 0)
                                     @foreach($warehouses as $index => $warehouse)

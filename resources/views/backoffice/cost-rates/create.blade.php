@@ -1,6 +1,6 @@
 @extends('backoffice.layouts.main', [
-    'title' => 'Add new cost rate',
-    'contentTitle' => 'Cost Rates'
+    'title' => 'Buat Harga Pengiriman Baru',
+    'contentTitle' => 'Harga Pengiriman'
 ])
 
 @section('content-page')
@@ -8,7 +8,7 @@
         <div class="col-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Add new</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Buat Baru</h6>
                 </div>
                 <div class="card-body">
                     @if(Session::has('success'))
@@ -27,9 +27,9 @@
                         <div class="row">
                             <div class="col-12 col-lg-6">
                                 <div class="form-group">
-                                    <label for="partner_id">Partner</label>
+                                    <label for="partner_id">Pelanggan</label>
                                     <select class="form-control @error('partner_id') is-invalid @enderror" id="partner_id" name="partner_id">
-                                        <option value="">Semua Partner</option>
+                                        <option value="">Semua Pelanggan</option>
         
                                         @if (count($partners) > 0)
                                             @foreach($partners as $index => $partner)

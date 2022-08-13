@@ -1,6 +1,6 @@
 @extends('backoffice.layouts.main', [
-    'title' => 'User list',
-    'contentTitle' => 'Users'
+    'title' => 'List Pegawai',
+    'contentTitle' => 'Pegawai'
 ])
 
 @section('content-page')
@@ -28,7 +28,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Email</th>
-                                    <th scope="col">Warehouse</th>
+                                    <th scope="col">Gudang</th>
                                     <th scope="col">Role</th>
                                     <th scope="col">Action</th>
                                 </tr>

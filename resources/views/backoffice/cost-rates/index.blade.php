@@ -1,6 +1,6 @@
 @extends('backoffice.layouts.main', [
-    'title' => 'Cost Rate list',
-    'contentTitle' => 'Cost Rates'
+    'title' => 'List Harga Pengiriman',
+    'contentTitle' => 'Harga Pengiriman'
 ])
 
 @section('content-page')
@@ -26,7 +26,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Partner</th>
+                                    <th scope="col">Pelanggan</th>
                                     <th scope="col">Pengirim</th>
                                     <th scope="col">Penerima</th>
                                     <th scope="col">Berat</th>
@@ -55,7 +55,7 @@
                                                     @csrf
                                                     @method('DELETE')
         
-                                                    <button onclick="return confirm('Apakah Anda yakin ingin menghapus cost rate ini ?')" type="submit" class="btn btn-danger btn-sm mb-1">Delete</button>
+                                                    <button onclick="return confirm('Apakah Anda yakin ingin menghapus harga pengiriman ini ?')" type="submit" class="btn btn-danger btn-sm mb-1">Delete</button>
                                                 </form>
                                             </td>
                                         </tr>
