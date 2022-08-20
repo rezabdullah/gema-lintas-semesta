@@ -145,9 +145,6 @@
                         <table class="w-100 mb-3">
                             <tr>
                                 <td style="width:30%; vertical-align: top; text-align: center">
-                                    {{ 
-                                        'Jakarta, '. date("j") .' '. \App\Helper\IndonesianMonthName::getMonthName(date("n")) .' '. date("Y")
-                                     }}
                                     <br>
                                     <br>
                                     <br>
@@ -164,6 +161,9 @@
                                 <td style="width:13.3%; vertical-align: top; text-align: center">
                                 </td>
                                 <td style="width:30%; vertical-align: top; text-align: center">
+                                    {{ 
+                                        'Jakarta, '. date("j") .' '. \App\Helper\IndonesianMonthName::getMonthName(date("n")) .' '. date("Y")
+                                    }}
                                     <br>
                                     <br>
                                     <br>
