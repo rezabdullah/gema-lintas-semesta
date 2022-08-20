@@ -38,15 +38,7 @@
                             </tr>
                         </table>
 
-                        <table class="w-100 mb-3">
-                            <tr>
-                                <td colspan="3" class="text-right">
-                                    <p style="font-size: 16px; font-weight: bold;">{{ date("j F Y")}}</p>
-                                </td>
-                            </tr>
-                        </table>
-
-                        <div class="table-responsive">
+                        <div class="table-responsive mb-5">
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
@@ -84,14 +76,17 @@
                         <table class="w-100 mb-3">
                             <tr>
                                 <td style="width:30%; vertical-align: top; text-align: center">
+                                        {{ 
+                                           'Jakarta, '. date("j F Y")
+                                        }}
                                     <br>
                                     <br>
                                     <br>
                                     <br>
                                     <br>
-                                    ({{ Auth::user()->name }})
+                                    (SAM)
                                     <br>
-                                    <b>Pegawai</b>
+                                    <b>Direktur</b>
                                 </td>
                                 <td style="width:13.3%; vertical-align: top; text-align: center">
                                 </td>
@@ -105,9 +100,9 @@
                                     <br>
                                     <br>
                                     <br>
-                                    (Andi Santoso)
+                                    ({{ Auth::user()->name }})
                                     <br>
-                                    <b>Direktur</b>
+                                    <b>Pegawai</b>
                                 </td>
                             </tr>
                         </table>

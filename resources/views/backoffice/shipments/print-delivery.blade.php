@@ -47,7 +47,6 @@
                             <tr>
                                 <td colspan="3" class="text-right">
                                     <p style="font-size: 18px; font-weight: bold;" class="mb-1">Resi#{{ $cargo->id }}</p>
-                                    <p style="font-size: 16px; font-weight: bold;">{{ date("j F Y")}}</p>
                                 </td>
                             </tr>
                         </table>
@@ -146,6 +145,9 @@
                         <table class="w-100 mb-3">
                             <tr>
                                 <td style="width:30%; vertical-align: top; text-align: center">
+                                    {{ 
+                                        'Jakarta, '. date("j F Y")
+                                     }}
                                     <br>
                                     <br>
                                     <br>
