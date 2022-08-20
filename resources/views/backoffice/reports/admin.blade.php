@@ -71,7 +71,7 @@
                             <tr>
                                 <td style="width:30%; vertical-align: top; text-align: center">
                                         {{ 
-                                           'Jakarta, '. date("j F Y")
+                                           'Jakarta, '. date("j") .' '. \App\Helper\IndonesianMonthName::getMonthName(date("n")) .' '. date("Y")
                                         }}
                                     <br>
                                     <br>
