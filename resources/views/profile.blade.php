@@ -5,13 +5,13 @@
 		<div class="container" data-aos="fade-up">
 			<div class="section-title">
 				<h2>Profil kami</h2>
-				<h3>PT. GEMA LINTAS SEMESTA</h3>
+				<h3>PT. GEMA LINTAS SINERGI</h3>
 			</div>
 
 			<div class="row">
 				<div class="col-lg-12 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
 					<p>
-						PT. Gema Lintas Semesta adalah perusahaan jasa pengiriman yang didirikan di Jakarta dengan Akte Notaris Hj. Huriah Sadeli, SH dengan SK. Menteri Kehakiman R.I. No. C – 1667. HT.03.02 – Th. 2002 tanggal 4 November 2002. Dengan berlokasi di Wisma Setia Tjiliwung Jl. Bukit Duri Tanjakan No. 54, Tebet, Jakarta Selatan. Seiring dengan pesatnya kebutuhan akan jasa pengiriman dan sadarnya akan kebutuhan kecepatan, ketepatan, keamanan dan kerahasiaan, maka dengan ini kami hadir untuk memberikan pelayanan kepada pelanggan untuk pengiriman dokumen dan paket keseluruh Indonesia dan International. Pelayanan kami meliputi pengiriman via udara, darat dan laut sesuai dengan kebutuhan dari pelanggan dan kami juga memberikan pelayanan untuk sewa mobil/charter untuk tujuan wilayah Jawa, Bali dan Sumatera.<br><br>
+						PT. Gema Lintas Sinergi adalah perusahaan jasa pengiriman yang didirikan di Jakarta dengan Akte Notaris Hj. Huriah Sadeli, SH dengan SK. Menteri Kehakiman R.I. No. C – 1667. HT.03.02 – Th. 2002 tanggal 4 November 2002. Dengan berlokasi di Wisma Setia Tjiliwung Jl. Bukit Duri Tanjakan No. 54, Tebet, Jakarta Selatan. Seiring dengan pesatnya kebutuhan akan jasa pengiriman dan sadarnya akan kebutuhan kecepatan, ketepatan, keamanan dan kerahasiaan, maka dengan ini kami hadir untuk memberikan pelayanan kepada pelanggan untuk pengiriman dokumen dan paket keseluruh Indonesia dan International. Pelayanan kami meliputi pengiriman via udara, darat dan laut sesuai dengan kebutuhan dari pelanggan dan kami juga memberikan pelayanan untuk sewa mobil/charter untuk tujuan wilayah Jawa, Bali dan Sumatera.<br><br>
 						Dalam mejalankan tugas dan fungsinya kami telah memilih dan merekrut tenaga kerja yang berpengalaman di bidang jasa pengiriman yang dapat bekerja secara profesional dan mempunyai disiplin yang tinggi, hal inilah yang menjadi landasan perusahaan kami dalam mejalankan roda perusahaan.
 					</p>
 

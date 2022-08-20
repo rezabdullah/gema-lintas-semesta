@@ -3,7 +3,7 @@
 @section('content-page')
 	<section id="hero" class="d-flex align-items-center">
 		<div class="container" data-aos="zoom-out" data-aos-delay="100">
-			<h1>Selamat datang di <br> <span>Gema Lintas Semesta</span></h1>
+			<h1>Selamat datang di <br> <span>Gema Lintas Sinergi</span></h1>
 			<h2>Kirimkan paket Anda dengan mudah dan cepat</h2>
 
 			<form action="{{ route('front.tracking.post') }}" method="POST" class="d-flex">

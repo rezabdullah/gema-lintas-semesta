@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Back office gema lintas semesta">
+    <meta name="description" content="Back office gema lintas sinergi">
     <meta name="author" content="Reza Abdulah">
 
     <title>Gema Back Office - {{ $title ?? '' }} </title>
@@ -39,7 +39,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Gema Lintas Semesta {{ date("Y") }}</span>
+                        <span>Copyright &copy; Gema Lintas Sinergi {{ date("Y") }}</span>
                     </div>
                 </div>
             </footer>

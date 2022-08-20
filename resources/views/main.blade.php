@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>GEMA LINTAS SEMESTA - {{ $title ?? 'Kargo Domestik dan Internasional' }}</title>
+  <title>GEMA LINTAS SINERGI - {{ $title ?? 'Kargo Domestik dan Internasional' }}</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -67,7 +67,7 @@
         <div class="container">
             <div class="row">
             <div class="col-lg-4 col-md-6 footer-contact">
-                <h3>PT. GEMA LINTAS SEMESTA</h3>
+                <h3>PT. GEMA LINTAS SINERGI</h3>
                 <p>
                     Wisma Setia Ciliwung Blok A. 108 Jl. Bukit Duri Tanjakan <br>
                     Tebet, Jakarta Selatan<br>
@@ -104,7 +104,7 @@
 
         <div class="container py-4">
         <div class="copyright">
-            &copy; Copyright <strong><span>Gema Lintas Semesta</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>Gema Lintas Sinergi</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
             <!-- All the links in the footer should remain intact. -->

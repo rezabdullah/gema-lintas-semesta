@@ -35,7 +35,7 @@
                                     <p class="mb-0">Wisma Setia Ciliwung Blok A. 108 Jl. Bukit Duri Tanjakan, Tebet, Jakarta Selatan</p>
                                     <p class="mb-0">Telp: 021-83783267</p>
                                     <p class="mb-0">Email: gema.express@yahoo.com</p>
-                                    <p class="mb-0">www.gemalintassemesta.com</p>
+                                    <p class="mb-0">kkp.rezabdulah.my.id</p>
                                 </td>
                                 <td style="width: 15%; vertical-align: top; text-align: right;">
                                     <img src="{{ asset('images/gema-logo.png') }}">
