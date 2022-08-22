@@ -58,6 +58,10 @@
             <div id="collapseReports" class="collapse {{ request()->is('bo/reports*') ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     @can('view delivered report')
+                        <a class="collapse-item {{ request()->is('bo/reports-invoice') ? 'active' : '' }}" href="{{ route('reports.invoice') }}">Penagihan</a>
+                    @endcan
+
+                    @can('view delivered report')
                         <a class="collapse-item {{ request()->is('bo/reports-delivered') ? 'active' : '' }}" href="{{ route('reports.delivered') }}">Barang Terkirim</a>
                     @endcan
 

@@ -60,6 +60,7 @@ Route::prefix('/bo')->group(function () {
         Route::post('/shipments/{cargo}', [CargoController::class, 'storeDelivery'])->name('shipments.delivery.store')->middleware('permission:create delivery shipment');
         Route::delete('/shipments/{cargoDetail}/destroy', [CargoController::class, 'destroyDelivery'])->name('shipments.delivery.destroy')->middleware('permission:delete delivery shipment');
 
+        Route::get('/reports-invoice', [ReportController::class, 'invoice'])->name('reports.invoice')->middleware('permission:view delivered report');
         Route::get('/reports-delivered', [ReportController::class, 'delivered'])->name('reports.delivered')->middleware('permission:view delivered report');
         Route::get('/reports-delivering', [ReportController::class, 'delivering'])->name('reports.delivering')->middleware('permission:view delivering report');
         Route::get('/reports-at-warehouse', [ReportController::class, 'atWarehouse'])->name('reports.at-warehouse')->middleware('permission:view at-warehouse report');
