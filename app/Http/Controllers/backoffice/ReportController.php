@@ -19,18 +19,15 @@ class ReportController extends Controller
         ->join('cargo_details', 'cargos.id', 'cargo_details.cargo_id')
         ->where(function($query) {
             $query->select('delivery_status')
-                ->from('cargo_details')
-                ->whereColumn('cargo_id', 'cargos.id')
-                ->latest()
-                ->limit(1);
-        }, 'DELIVERING-BY-COURIER')
-        ->orWhere(function($query) {
-            $query->select('delivery_status')
-                ->from('cargo_details')
-                ->whereColumn('cargo_id', 'cargos.id')
-                ->latest()
-                ->limit(1);
-        }, 'DELIVERING')->groupBy('cargos.id')->get();
+            ->from('cargo_details')
+            ->whereColumn('cargo_id', 'cargos.id')
+            ->where('delivery_status', 'DELIVERING')
+            ->orWhere('delivery_status', 'DELIVERING-BY-COURIER')
+            ;
+        })
+        ->groupBy('cargos.id')
+        ->orderBy('cargos.created_at', 'desc')
+        ->get();
 
         return view('backoffice.reports.delivering', compact('cargos'));
     }
@@ -44,11 +41,13 @@ class ReportController extends Controller
         ->join('cargo_details', 'cargos.id', 'cargo_details.cargo_id')
         ->where(function($query) {
             $query->select('delivery_status')
-                ->from('cargo_details')
-                ->whereColumn('cargo_id', 'cargos.id')
-                ->latest()
-                ->limit(1);
-        }, 'DELIVERED')->groupBy('cargos.id')->get();
+            ->from('cargo_details')
+            ->whereColumn('cargo_id', 'cargos.id')
+            ->where('delivery_status', 'DELIVERED');
+        })
+        ->groupBy('cargos.id')
+        ->orderBy('cargos.created_at', 'desc')
+        ->get();
 
         return view('backoffice.reports.delivered', compact('cargos'));
     }
@@ -62,11 +61,13 @@ class ReportController extends Controller
         ->join('cargo_details', 'cargos.id', 'cargo_details.cargo_id')
         ->where(function($query) {
             $query->select('delivery_status')
-                ->from('cargo_details')
-                ->whereColumn('cargo_id', 'cargos.id')
-                ->latest()
-                ->limit(1);
-        }, 'RECEIVED-AT-WAREHOUSE')->groupBy('cargos.id')->get();
+            ->from('cargo_details')
+            ->whereColumn('cargo_id', 'cargos.id')
+            ->where('delivery_status', 'RECEIVED-AT-WAREHOUSE');
+        })
+        ->groupBy('cargos.id')
+        ->orderBy('cargos.created_at', 'desc')
+        ->get();
 
         return view('backoffice.reports.at-warehouse', compact('cargos'));
     }

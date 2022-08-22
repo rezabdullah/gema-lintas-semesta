@@ -43,6 +43,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
+                                        <th scope="col">AWB</th>
                                         <th scope="col">Tanggal</th>
                                         <th scope="col">Asal</th>
                                         <th scope="col">Tujuan</th>
@@ -56,12 +57,13 @@
                                         @foreach($cargos as $index => $cargo)
                                             <tr>
                                                 <th scope="row">{{ ($index+1) }}</th>
+                                                <td>{{ $cargo->id }}</td>
                                                 <td>{{ $cargo->created_at }}</td>
                                                 <td>{{ $cargo->sender_sub_district . ', '. $cargo->sender_city }}</td>
                                                 <td>{{ $cargo->destination_sub_district . ', '. $cargo->destination_city }}</td>
                                                 <td>{{ $cargo->package_description }}</td>
                                                 <td>{{ $cargo->quantity }}</td>
-                                                <td>{{ $cargo->weight }}</td>
+                                                <td>{{ $cargo->weight }} kg</td>
                                             </tr>
                                         @endforeach
                                     @else
