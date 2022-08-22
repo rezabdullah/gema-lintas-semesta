@@ -16,7 +16,7 @@ class CargoController extends Controller
     {
         $cargos = Cargo::with('partner')->with('costRate')->with(['cargoDetails' => function ($query) { 
             $query->with('user')->orderBy('id', 'desc');
-        }])->paginate(env('TABLE_PAGINATE'));
+        }])->orderBy('id', 'desc')->paginate(env('TABLE_PAGINATE'));
         
         return view('backoffice.shipments.index', compact('cargos'));
     }
