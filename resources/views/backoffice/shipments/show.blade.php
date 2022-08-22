@@ -36,9 +36,14 @@
                                     <td>{{ $cargo->created_at }}</td>
                                 </tr>
                                 <tr>
+                                    <td>Deskripsi</td>
+                                    <td>:</td>
+                                    <td>{{ $cargo->package_description }}</td>
+                                </tr>
+                                <tr>
                                     <td>Berat</td>
                                     <td>:</td>
-                                    <td>{{ $cargo->weight }}</td>
+                                    <td>{{ $cargo->weight }} Kg</td>
                                 </tr>
                                 <tr>
                                     <td>Jumlah</td>

@@ -25,15 +25,23 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th scope="col" style="width: 3%">#</th>
+                                    {{-- <th scope="col" style="width: 3%">#</th>
                                     <th scope="col" style="width: 10%">No AWB</th>
                                     <th scope="col" style="width: 10%">Tanggal</th>
+                                    <th scope="col" style="width: 10%">Barang</th>
                                     <th scope="col" style="width: 10%">Pengirim</th>
                                     <th scope="col" style="width: 20%">Asal</th>
                                     <th scope="col" style="width: 20%">Tujuan</th>
                                     <th scope="col" style="width: 5%">Tipe</th>
                                     <th scope="col" style="width: 10%">STATUS</th>
-                                    <th scope="col" style="width: 17%">Action</th>
+                                    <th scope="col" style="width: 7%">Action</th> --}}
+                                    <th scope="col" style="width: 3%">#</th>
+                                    <th scope="col" style="width: 7%">No AWB</th>
+                                    <th scope="col" style="width: 10%">Tanggal</th>
+                                    <th scope="col" style="width: 28%">Barang</th>
+                                    <th scope="col" style="width: 40%">Rute</th>
+                                    <th scope="col" style="width: 5%">Status</th>
+                                    <th scope="col" style="width: 7%">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,10 +51,18 @@
                                             <th scope="row">{{ ($index+1) }}</th>
                                             <td>{{ $cargo->id }}</td>
                                             <td>{{ $cargo->created_at }}</td>
-                                            <td>{{ $cargo->partner->name }}</td>
-                                            <td>{{ $cargo->costRate->sender_sub_district .', '. $cargo->costRate->sender_city .', '. $cargo->costRate->sender_province }}</td>
-                                            <td>{{ $cargo->costRate->destination_sub_district .', '. $cargo->costRate->destination_city .', '. $cargo->costRate->destination_province }}</td>
-                                            <td>{{ $cargo->costRate->transport_type }}</td>
+                                            <td>
+                                                Deskripsi: {{ $cargo->package_description }} <br>
+                                                Tipe: {{ $cargo->costRate->transport_type }} <br>
+                                                Jumlah: {{ $cargo->quantity }} <br>
+                                                Berat: {{ $cargo->weight }} Kg <br>
+                                                Pengirim: {{ $cargo->partner->name }} <br>
+                                                Penerima: {{ $cargo->recipient_name }} <br>
+                                            </td>
+                                            <td>
+                                                Asal: {{ $cargo->costRate->sender_sub_district .', '. $cargo->costRate->sender_city }} <br>
+                                                Tujuan: {{ $cargo->costRate->destination_sub_district .', '. $cargo->costRate->destination_city }}
+                                            </td>
                                             <td>{{ isset($cargo->cargoDetails[0]) ? $cargo->cargoDetails[0]->delivery_status : '' }}</td>
                                             <td>
                                                 <a href="{{ route('shipments.show', $cargo->id) }}" class="btn btn-primary btn-sm mb-1 d-block" style="font-size: 11.5px;">

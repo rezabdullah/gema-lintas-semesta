@@ -109,16 +109,16 @@
 
                         <table class="table table-striped mb-5" style="font-size: 14px; color: #000;">
                             <tr>
-                                <th style="width: 5%; vertical-align: top; text-align: center; border: 1px solid #373737;" class="py-1">No</th>
-                                <th style="width: 35%; vertical-align: top; text-align: center; border: 1px solid #373737;" class="py-1">Asal</th>
-                                <th style="width: 35%; vertical-align: top; text-align: center; border: 1px solid #373737;" class="py-1">Tujuan</th>
-                                <th style="width: 10%; vertical-align: top; text-align: center; border: 1px solid #373737;" class="py-1">Berat</th>
-                                <th style="width: 10%; vertical-align: top; text-align: center; border: 1px solid #373737;" class="py-1">Jumlah</th>
+                                <th style="width: 20%; vertical-align: top; text-align: center; border: 1px solid #373737;" class="py-1">Barang</th>
+                                <th style="width: 30%; vertical-align: top; text-align: center; border: 1px solid #373737;" class="py-1">Asal</th>
+                                <th style="width: 30%; vertical-align: top; text-align: center; border: 1px solid #373737;" class="py-1">Tujuan</th>
+                                <th style="width: 5%; vertical-align: top; text-align: center; border: 1px solid #373737;" class="py-1">Berat</th>
+                                <th style="width: 5%; vertical-align: top; text-align: center; border: 1px solid #373737;" class="py-1">Jumlah</th>
                                 <th style="width: 10%; vertical-align: top; text-align: center; border: 1px solid #373737;" class="py-1">Harga</th>
                                 <th style="width: 10%; vertical-align: top; text-align: center; border: 1px solid #373737;" class="py-1">Total</th>
                             </tr>
                             <tr>
-                                <td style="border: 1px solid #373737;" class="py-1">1</td>
+                                <td style="border: 1px solid #373737;" class="py-1">{{ $cargo->package_description }}</td>
                                 <td style="border: 1px solid #373737;" class="py-1">
                                     {{ 
                                         $cargo->sender_address .','. 
