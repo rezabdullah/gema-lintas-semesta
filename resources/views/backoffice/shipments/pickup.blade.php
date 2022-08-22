@@ -253,7 +253,7 @@
                     url: '{{ route("ajax.partner") }}',
                     type: 'GET',
                     data: { id: $(this).val() },
-                    success: function (data) {                        
+                    success: function (data) {
                         $('#cost_rate_id').empty().attr('disabled', false).append('<option value="">Pilih Cost Rate</option>');
 
                         $.each(data.costRates, function (key, value) {
@@ -271,10 +271,9 @@
                             + '</option>');
                         });
 
-                        $('#sender_name').empty().val(data.name);
-                        $('#sender_phone').empty().val(data.phone);
-                        $('#sender_email').empty().val(data.email);
-
+                        $('#sender_name').empty().val(data.partner.name);
+                        $('#sender_phone').empty().val(data.partner.phone);
+                        $('#sender_email').empty().val(data.partner.email);
                     }
                 });
             }
