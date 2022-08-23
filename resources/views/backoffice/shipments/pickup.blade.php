@@ -53,9 +53,9 @@
                             </div>
                             <div class="col-12 col-lg-6">
                                 <div class="form-group">
-                                    <label for="cost_rate_id">Cost Rate</label>
+                                    <label for="cost_rate_id">Rute Pengiriman</label>
                                     <select class="form-control @error('cost_rate_id') is-invalid @enderror" id="cost_rate_id" name="cost_rate_id" disabled>
-                                        <option value="">Pilih Cost Rate</option>
+                                        <option value="">Pilih Rute Pengiriman</option>
                                     </select>
         
                                     @error('cost_rate_id')
@@ -206,10 +206,10 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="recipient_address">Alamat Pengirim</label>
+                                    <label for="recipient_address">Alamat Penerima</label>
                                     <input type="text" class="form-control @error('recipient_address') is-invalid @enderror" id="recipient_address" name="recipient_address" placeholder="Jalan Rambutan" value="{{ old('recipient_address') }}">
                                     
-                                    @error('recipient_email')
+                                    @error('recipient_address')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -254,7 +254,7 @@
                     type: 'GET',
                     data: { id: $(this).val() },
                     success: function (data) {
-                        $('#cost_rate_id').empty().attr('disabled', false).append('<option value="">Pilih Cost Rate</option>');
+                        $('#cost_rate_id').empty().attr('disabled', false).append('<option value="">Pilih Rute Pengiriman</option>');
 
                         $.each(data.costRates, function (key, value) {
                             $('#cost_rate_id').append('<option value="' + value['id'] + '"'+
